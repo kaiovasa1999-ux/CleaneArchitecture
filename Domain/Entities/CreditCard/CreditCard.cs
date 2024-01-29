@@ -13,7 +13,6 @@ internal class CreditCard : Entity
         CDate = cdate;
     }
 
-
     public CreditCardStatus CardStatus { get; private set; }
 
     public Guid ClientId { get; private set; }

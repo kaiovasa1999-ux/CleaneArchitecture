@@ -22,7 +22,7 @@ namespace Domain.Entities.ClientCotnact
         public DateTime CDate { get; set; }
 
 
-        public CreditCard AddNewCard(CreditCard newCard, Money money)
+        public void AddNewCard(CreditCard newCard, Money money)
         {
             if (money.Amount <= 0)
             {
@@ -33,12 +33,8 @@ namespace Domain.Entities.ClientCotnact
             {
                 throw new ArgumentException(nameof(newCard.CardStatus));
             }
-
-            CreditCard card = new CreditCard(new Guid(), newCard.CardStatus, this.Id, money, DateTime.Now);
-            _creditCards.Add(card);
-
-            return card;
-
+            CreditCard creditCard = CreditCard.Create(this.Id,money);
+            _creditCards.Add(creditCard);
         }
     }
 }
